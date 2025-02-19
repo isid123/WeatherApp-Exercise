@@ -1,4 +1,5 @@
 using WeatherApp.Ex.Data;
+using WeatherApp.Ex.DTO;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,8 @@ builder.Services.AddOpenApi();
 
 string? connStr = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddSqlServer<WeatherDbContext>(connStr);
+
+builder.Services.AddSingleton<Mapper>();
 
 
 var app = builder.Build();

@@ -1,4 +1,5 @@
-﻿using WeatherApp.Ex.Data;
+﻿using System.Globalization;
+using WeatherApp.Ex.Data;
 
 namespace WeatherApp.Ex.DTO
 {
@@ -6,6 +7,7 @@ namespace WeatherApp.Ex.DTO
     {
         public required string Name { get; set; }
         public required string Country { get; set; }
-        public List<FavoriteCities>? FavoriteCities { get; set; }
+        public Weather? Weather { get; set; }
+
     }
 }

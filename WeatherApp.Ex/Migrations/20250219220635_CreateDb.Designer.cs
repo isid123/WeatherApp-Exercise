@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WeatherApp.Ex.Data;
 
@@ -10,9 +11,11 @@ using WeatherApp.Ex.Data;
 namespace WeatherApp.Ex.Migrations
 {
     [DbContext(typeof(WeatherDbContext))]
-    partial class WeatherDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250219220635_CreateDb")]
+    partial class CreateDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,6 +69,17 @@ namespace WeatherApp.Ex.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("WeatherApp.Ex.Data.Weather", b =>
+                {
+                    b.Property<int>("Humidity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Temperature")
+                        .HasColumnType("int");
+
+                    b.ToTable("Weathers");
                 });
 
             modelBuilder.Entity("WeatherApp.Ex.Data.City", b =>
